@@ -1,0 +1,60 @@
+---
+# MANAGED BY PUPPET RAZOR MODULE
+#
+production:
+  database_url: 'jdbc:postgresql:razor_prd?user=razor&password=mypass'
+
+development:
+  database_url: 'jdbc:postgresql:razor_dev'
+
+test:
+  database_url: 'jdbc:postgresql:razor?user=razor&password=mypass'
+
+all:
+  auth:
+    enabled: false
+    config: shiro.ini
+
+  microkernel:
+    debug_level: debug
+    kernel_args:
+
+  secure_api: false
+  protect_new_nodes: false
+  store_hook_input: false
+  store_hook_output: false
+
+  match_nodes_on:
+    - mac
+  checkin_interval: 15
+  task_path: tasks
+  repo_store_root: /var/lib/razor/repo-store
+  broker_path: brokers
+  hook_path: hooks
+  facts:
+    blacklist:
+      - domain
+      - filesystems
+      - fqdn
+      - hostname
+      - id
+      - /kernel.*/
+      - memoryfree
+      - memorysize
+      - memorytotal
+      - /operatingsystem.*/
+      - osfamily
+      - path
+      - ps
+      - rubysitedir
+      - rubyversion
+      - selinux
+      - sshdsakey
+      - /sshfp_[dr]sa/
+      - sshrsakey
+      - /swap.*/
+      - timezone
+      - /uptime.*/
+    match_on:
+      - unique_fact
+      - /other_facts_.*/

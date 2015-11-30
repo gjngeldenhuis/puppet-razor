@@ -15,7 +15,8 @@ class razor (
   $service_name = $::razor::params::service_name,
 ) inherits ::razor::params {
 
-
+  # validate parameters here
+  class { '::razor::repos': } ->
   class { '::razor::install': } ->
   class { '::razor::config': } ~>
   class { '::razor::service': } ->

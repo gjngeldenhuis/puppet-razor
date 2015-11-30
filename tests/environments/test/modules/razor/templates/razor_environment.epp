@@ -1,0 +1,20 @@
+<%# Environment Template %>
+<%= $environment_name -%>:
+<% if @auth %>
+  auth:
+  <% @auth.each do |key,value| -%>
+  <%= key %>: <%= value %>
+  <% end -%>
+<% end -%>
+<%# -%>
+<% if @microkernel %>
+  microkernel:
+  <% @microkernel.each do |key,value| -%>
+  <%= key %>: <%= value %>
+  <% end -%>
+<% end -%>
+<%# -%>
+
+<% if @secure_api = undef %>
+  secure_api: <%= @secure_api %>
+<% end -%>

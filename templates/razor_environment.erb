@@ -1,0 +1,72 @@
+<%# Environment Template %>
+<%= @environment_name -%>:
+<% if @database_connection -%>
+  database_url: <%= @database_connection %>
+<% end -%>
+<% if @auth -%>
+  auth:
+  <% @auth.each do |key,value| -%>
+  <%= key %>: <%= value %>
+  <% end -%>
+<% end -%>
+<%# -%>
+<% if @microkernel %>
+  microkernel:
+  <% @microkernel.each do |key,value| -%>
+  <%= key %>: <%= value %>
+  <% end -%>
+<% end -%>
+<%# %>
+<% if scope.lookupvar('secure_api') != nil -%>
+  secure_api: <%= @secure_api %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('protect_new_nodes') != nil -%>
+  protect_new_nodes: <%= @protect_new_nodes %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('store_hook_input') != nil -%>
+  store_hook_input: <%= @store_hook_input %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('store_hook_output') != nil -%>
+  store_hook_output: <%= @store_hook_output %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('match_nodes_on') != nil -%>
+  match_nodes_on:
+  <% @match_nodes_on.each do |value| -%>
+  - <%= value %>
+  <% end -%>
+<% end -%>
+
+<%# -%>
+<% if scope.lookupvar('checkin_interval') != nil -%>
+  checkin_interval: <%= @checkin_interval %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('task_path') != nil -%>
+  task_path: <%= @task_path %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('repo_store_root') != nil -%>
+  repo_store_root: <%= @repo_store_root %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('broker_path') != nil -%>
+  broker_path: <%= @broker_path %>
+<% end -%>
+<%# -%>
+<% if scope.lookupvar('hook_path') != nil -%>
+  hook_path: <%= @hook_path %>
+<% end -%>
+<%# %>
+<% if @fact_matching -%>
+  facts:
+  <% @fact_matching.each do |key,value| -%>
+  <%= key -%>:
+  <% value.each do |item| -%>
+    - <%= item %>
+  <% end -%>
+  <% end -%>
+<% end -%>
